@@ -1,4 +1,4 @@
-const Case=requestAnimationFrame
+const Case=require('./models/Case')
 const listCases=async (req,res)=>{
     const cases= await Case.find.populate('customer').populate(assigned_to).sort({createAt: -1})
     res.json (cases)
