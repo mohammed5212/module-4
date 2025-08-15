@@ -1,4 +1,4 @@
-const Customer=req
+const Customer=require('../models/customer')
 
 const listCustomers=async(req,res)=>{
     const customers =await Customer.find().sort({createAt:-1})
