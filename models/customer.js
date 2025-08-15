@@ -1,8 +1,10 @@
-const mongoose= require ('mongoose')
-const userSchema = new mongoose.Schema({
-    username:{type:String,require:true,unique:true},
-    password_hash:{type:String,enum:['admin','user'],default:'User'},
-    email :{type:String,require:true,unique:true}
+const mongoose = require('mongoose');
 
-},{timestamps:true})
-module.exports=mongoose.Schema('User',userSchema)
+const customerSchema = new mongoose.Schema({
+  name: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
+  password_hash: { type: String, required: true }, // hashed password
+  role: { type: String, enum: ['admin', 'user'], default: 'user' } // user role
+}, { timestamps: true });
+
+module.exports = mongoose.model('Customer', customerSchema);

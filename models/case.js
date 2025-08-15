@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const caseScheme=new mongoose. Schema({
-    title:{type:String,require:true},
+    title:{type:String,required:true},
     description:{type:String},
     customer:{type:mongoose.Schema.Types.ObjectId,ref:'Customer',require:true},
     assigned_to:{type:mongoose.Schema.Types.ObjectId,ref:'User'},
