@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const User = require("./models/Case");
+const User = require("../models/case");
 
 const register = async (req, res) => {
   try {
@@ -19,7 +19,7 @@ const register = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "server errorduring registration" });
+    res.status(500).json({ message: "server error during registration" });
   }
 };
 const login = async (req, res) => {
@@ -47,4 +47,4 @@ const login = async (req, res) => {
     res.status(500).json({ message: "server error during login" });
   }
 };
-module.exports = (register, login);
+module.exports = {register, login};

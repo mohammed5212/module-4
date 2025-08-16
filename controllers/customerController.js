@@ -1,4 +1,5 @@
-const Customer = require('./models/Customer');
+const Customer = require('../models/customer');
+
 const listCustomers = async (req, res) => {
   try {
     const customers = await Customer.find().sort({ createdAt: -1 });

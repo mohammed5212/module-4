@@ -13,9 +13,15 @@ app.use (express.json)
 
 
 // //routes
-// app.use('/api/auth',authRoutes)
-// app.use('/api/customers',customerRoutes)
-// app.use('/api/cases',caseRoutes)
+
+
+app.use('/api/auth',authRoutes)
+
+
+app.use('/api/customers',customerRoutes)
+
+
+app.use('/api/cases',caseRoutes)
 
 
 // check
