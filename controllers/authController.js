@@ -10,12 +10,12 @@ const register = async (req, res) => {
     }
 
     const salt = await bcrypt.genSalt(10);
-    const password_hash = await bcrypt.password_hash(password, salt);
+    const password_hash = await bcrypt.hash(password, salt);
     const user = await User.create({ username, email, password_hash, role });
     return res.status(201).json({
-      id: User._id,
-      username: User.username,
-      email: User.email,
+      id: user._id,
+      username: user.username,
+      email: user.email,
     });
   } catch (error) {
     console.error(error);
@@ -32,7 +32,7 @@ const login = async (req, res) => {
     if (!user) {
       return res.status(401).json({ message: "Invalid cridentials" });
     }
-    const match = await bcrypt.compare(password, User.password_hash);
+    const match = await bcrypt.compare(password, user.password_hash);
     if (!match) {
       return res.status(401).json({ message: "Invalid cridentials" });
     }
