@@ -36,6 +36,6 @@ const asyncHandler = fn => (req, res, next) => {
 // error handling
 app.use((err,req,res,next)=>{
     console.error(err.stack)
-    res.satus(500).json({"server error":err.message})
+    res.status(500).json({"server error":err.message})
 })
 module.exports=app

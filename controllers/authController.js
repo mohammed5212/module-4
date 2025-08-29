@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const User = require("../models/case");
-
+const User = require("../models/user");
+require('dotenv').config()
 const register = async (req, res) => {
   try {
     const { username, email, password, role } = req.body;
@@ -18,9 +18,9 @@ const register = async (req, res) => {
       email: user.email,
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "server error during registration" });
-  }
+  console.error("Register error:", error);
+  res.status(500).json({ message: error.message });
+}
 };
 const login = async (req, res) => {
   try {
